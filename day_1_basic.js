@@ -77,15 +77,56 @@
 
 // Strict inequality: checks both value and type.
 // "2" (string) is not strictly equal to 2 (number); returns true.
-console.log("2" !== 2);
+// console.log("2" !== 2);
 
-// Loose inequality: performs type coercion.
-// "2" (string) is coerced to 2 (number) so they are considered equal; returns false.
-console.log("2" != 2);
+// // Loose inequality: performs type coercion.
+// // "2" (string) is coerced to 2 (number) so they are considered equal; returns false.
+// console.log("2" != 2);
 
-// Checks if 2 is not equal to 0; returns true because 2 and 0 are different values.
-console.log(2 != 0);
+// // Checks if 2 is not equal to 0; returns true because 2 and 0 are different values.
+// console.log(2 != 0);
 
-// Checks if 2 is not equal to 2; returns false because both values are the same.
-console.log(2 != 2);
- 
+// // Checks if 2 is not equal to 2; returns false because both values are the same.
+// console.log(2 != 2);
+
+// // Define a constant with a floating point number.
+// const a = 12.343
+
+// // Math.ceil rounds up the number to the nearest integer.
+// console.log(Math.ceil(9.1));
+
+// // Math.floor rounds down the number to the nearest integer.
+// console.log(Math.floor(9.9));
+
+// // Math.round rounds the number to the nearest integer.
+// console.log(Math.round(10.1));
+
+// // Math.round rounds the number to the nearest integer.
+// console.log(Math.round(10.6));
+
+// // Math.trunc removes the decimal part and only returns the integer part.
+// console.log(Math.trunc(10.99));
+
+// // Math.pow raises the first number to the power of the second (10^2).
+// console.log(Math.pow(10, 2));
+
+// // Math.sqrt returns the square root of the number.
+// console.log(Math.sqrt(10));
+
+// // Math.abs returns the absolute value of the number.
+// console.log(Math.abs(-10));
+
+// // Math.max returns the highest value in the list of numbers.
+// console.log(Math.max(...[44, 10]));
+
+// // Math.min returns the lowest value in the list of numbers.
+// console.log(Math.min(...[44, 10]));
+
+// // toFixed(1) rounds the number to 1 decimal place and returns it as a string. 
+// // Number(...) converts it back to a number.
+// console.log(Number(a.toFixed(1)));
+
+// // Generates a random number between 1000 and 9999 (inclusive)
+// console.log(Math.floor(Math.random() * 9000) + 1000);
+
+
