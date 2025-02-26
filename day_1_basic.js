@@ -88,3 +88,4 @@ console.log(2 != 0);
 
 // Checks if 2 is not equal to 2; returns false because both values are the same.
 console.log(2 != 2);
+ 
