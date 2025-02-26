@@ -129,4 +129,14 @@
 // // Generates a random number between 1000 and 9999 (inclusive)
 // console.log(Math.floor(Math.random() * 9000) + 1000);
 
+// Define variable 'l' and assign it the value 100
+// let l = 100
+
+// // Define variable 'b' and assign it the value 22
+// let b = 22
+
+// // Calculate the sum of 'l' and 'b', multiply the result by 2, and log the value to the console
+// console.log(2 * (l + b));
+
+
 
