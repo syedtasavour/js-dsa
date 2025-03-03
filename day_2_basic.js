@@ -70,3 +70,110 @@ if (!Array.prototype.myMap) {
 const myRes = arr.myReduce(
   (abTakKiValue, currentValue) => abTakKiValue + currentValue
 );
+
+// Implementation of a Promise-like class called MyPromise
+class MyPromise {
+  constructor(executorFn) {
+    // Initialize state to 'pending'
+    this._state = 'pending';
+    // Arrays to store callback functions
+    this._successCallbacks = [];
+    this._errorCallbacks = [];
+    this._finallyCallbacks = [];
+    
+    // Will hold the resolved value
+    this.value = undefined;
+
+    // Execute the executor function with resolver and rejector functions
+    executorFn(
+      this.resolverFunction.bind(this),
+      this.rejectorFunction.bind(this)
+    );
+  }
+
+  // Method to attach success callbacks
+  then(cb) {
+    if (this._state == 'fulfilled') {
+      // If promise is already fulfilled, execute callback immediately
+      console.log(`Apka promise toh pehle hi pura hogya, Run hi kar deta hu`);
+      cb(this.value);
+      return this;
+    }
+    // Otherwise, store callback for later execution
+    this._successCallbacks.push(cb);
+    return this;
+  }
+
+  // Method to attach error callbacks
+  catch(cb) {
+    if (this._state == 'rejected') {
+      // If promise is already rejected, execute callback immediately
+      console.log(`Apka promise toh pehle hi reject hogya, Run hi kar deta hu`);
+      cb();
+      return this;
+    }
+    // Otherwise, store callback for later execution
+    this._errorCallbacks.push(cb);
+    return this;
+  }
+
+  // Method to attach finally callbacks (runs after promise settles)
+  finally(cb) {
+    if (this._state !== 'pending') {
+      // If promise is already settled, execute callback immediately
+      cb();
+      return this;
+    }
+    // Otherwise, store callback for later execution
+    this._finallyCallbacks.push(cb);
+    return this;
+  }
+
+  // Function to resolve the promise
+  resolverFunction(value) {
+    console.log(
+      `Fullfilling Promise, Running ${this._successCallbacks.length} callbacks`
+    );
+    // Store resolved value
+    this.value = value;
+    // Change state to fulfilled
+    this._state = 'fulfilled';
+    // Execute all success callbacks
+    this._successCallbacks.forEach((cb) => cb(value));
+    // Execute all finally callbacks
+    this._finallyCallbacks.forEach((cb) => cb());
+  }
+
+  // Function to reject the promise
+  rejectorFunction(err) {
+    // Change state to rejected
+    this._state = 'rejected';
+    // Execute all error callbacks
+    this._errorCallbacks.forEach((cb) => cb(err));
+    // Execute all finally callbacks
+    this._finallyCallbacks.forEach((cb) => cb());
+  }
+}
+
+// Helper function that creates and immediately resolves a MyPromise
+function wait(seconds) {
+  const p = new MyPromise((resolve, reject) => {
+    resolve('Hahaha');
+  });
+  return p;
+}
+
+// Create a promise that resolves immediately
+const p = wait(5);
+
+console.log('Registering Callbacks');
+
+// Chain methods on the promise with different callbacks
+p.then((e) => console.log(`V1 Promise Resolved After 5 sec`, e))
+  .catch(() => console.log(` V1Rejected after 5 sec`))
+  .finally(() => console.log(` V1 Mei toh harr baar chalunga`));
+
+// Add another set of callbacks to the same promise
+p.then((e) => console.log(`V2 Promise Resolved After 5 sec`, e))
+  .catch(() => console.log(`V2 Rejected after 5 sec`))
+  .finally(() => console.log(`V2 Mei toh harr baar chalunga`));
