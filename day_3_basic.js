@@ -34,5 +34,6 @@ const debouncedGreet = debounce(() => greet("hitesh"), 3000);
 
 // Multiple calls within the delay window will only result in one execution
 debouncedGreet(); // These three calls will only execute the function once
-debouncedGreet(); // after 3 seconds, since each call resets the timer
+debouncedGreet(); //  after 3 seconds, since each call resets the timer
 debouncedGreet();
+ 
