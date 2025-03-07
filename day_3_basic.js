@@ -69,5 +69,5 @@ const throttle = (callback, delayMs) => {
 
 // Example usage (would need actual function and args):
 // const throttledScroll = throttle(handleScroll, 1000);
-// window.addEventListener('scroll', throttledScroll);
+// window.addEventListener('scroll', throttledScroll);  
  
